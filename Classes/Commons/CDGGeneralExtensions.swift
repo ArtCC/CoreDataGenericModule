@@ -24,17 +24,4 @@ extension String {
             return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
         }
     }
-    
-    /**
-     Localize string with comment
-     - parameter comment: comment
-     - returns: response string
-     */
-    func localizedWithComment(comment: String) -> String {
-        if let bundle: NSBundle = NSBundle(identifier: CDGGeneralDefineConstants.kSDKBundle) {
-            return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: comment)
-        } else {
-            return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: comment)
-        }
-    }
 }
