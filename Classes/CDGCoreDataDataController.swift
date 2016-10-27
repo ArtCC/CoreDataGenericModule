@@ -41,7 +41,7 @@ public class CDGCoreDataDataController: NSObject {
      */
     public override init() {
         // This resource is the same name as your xcdatamodeld contained in your project
-        let bundle: NSBundle = NSBundle(identifier: CDGGeneralDefineConstants.kSDKBundle)!
+        let bundle: NSBundle = NSBundle(forClass: CDGCoreDataDataController.self)
         guard let modelURL = bundle.URLForResource("CDGModel", withExtension:"momd") else {
             fatalError("Error loading model from bundle")
         }

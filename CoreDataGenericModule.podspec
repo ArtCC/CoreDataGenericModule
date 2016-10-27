@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.platform         = :ios
   s.source           = { :git => "https://github.com/ArtCC/CoreDataGenericModule.git", :tag => s.version }
   s.source_files     = "Classes/**/*.{swift}"
-  s.resources        = "*.xcdatamodeld"
+  s.resources        = "Classes/Model/*.xcdatamodeld"
   s.dependency 'RNCryptor', '~> 4.0.0-beta'
 end

@@ -10,8 +10,6 @@
 		696561881DC1FF2700AA7374 /* CDGCoreDataDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696561851DC1FF2700AA7374 /* CDGCoreDataDataController.swift */; };
 		696561891DC1FF2700AA7374 /* CDGCoreDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696561861DC1FF2700AA7374 /* CDGCoreDataEngine.swift */; };
 		6965618A1DC1FF2700AA7374 /* CDGCoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696561871DC1FF2700AA7374 /* CDGCoreDataProtocol.swift */; };
-		6965618F1DC2002900AA7374 /* CDGGeneralDefineConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965618C1DC2002900AA7374 /* CDGGeneralDefineConstants.swift */; };
-		696561901DC2002900AA7374 /* CDGGeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965618D1DC2002900AA7374 /* CDGGeneralExtensions.swift */; };
 		69883C631DC1FBD40092A7BC /* CoreDataGenericModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 69883C621DC1FBD40092A7BC /* CoreDataGenericModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69883C6E1DC1FBF90092A7BC /* CDGModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69883C6C1DC1FBF90092A7BC /* CDGModel.xcdatamodeld */; };
 		69883C711DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69883C6F1DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift */; };
@@ -22,8 +20,6 @@
 		696561851DC1FF2700AA7374 /* CDGCoreDataDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDGCoreDataDataController.swift; sourceTree = "<group>"; };
 		696561861DC1FF2700AA7374 /* CDGCoreDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDGCoreDataEngine.swift; sourceTree = "<group>"; };
 		696561871DC1FF2700AA7374 /* CDGCoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDGCoreDataProtocol.swift; sourceTree = "<group>"; };
-		6965618C1DC2002900AA7374 /* CDGGeneralDefineConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDGGeneralDefineConstants.swift; sourceTree = "<group>"; };
-		6965618D1DC2002900AA7374 /* CDGGeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDGGeneralExtensions.swift; sourceTree = "<group>"; };
 		69883C5F1DC1FBD40092A7BC /* CoreDataGenericModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataGenericModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69883C621DC1FBD40092A7BC /* CoreDataGenericModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataGenericModule.h; sourceTree = "<group>"; };
 		69883C641DC1FBD40092A7BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,15 +39,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6965618B1DC2001D00AA7374 /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				6965618C1DC2002900AA7374 /* CDGGeneralDefineConstants.swift */,
-				6965618D1DC2002900AA7374 /* CDGGeneralExtensions.swift */,
-			);
-			path = Commons;
-			sourceTree = "<group>";
-		};
 		69883C551DC1FBD40092A7BC = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +68,6 @@
 		69883C6A1DC1FBE70092A7BC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6965618B1DC2001D00AA7374 /* Commons */,
 				69883C6B1DC1FBEB0092A7BC /* Model */,
 				696561851DC1FF2700AA7374 /* CDGCoreDataDataController.swift */,
 				696561861DC1FF2700AA7374 /* CDGCoreDataEngine.swift */,
@@ -182,11 +168,9 @@
 				69883C711DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift in Sources */,
 				6965618A1DC1FF2700AA7374 /* CDGCoreDataProtocol.swift in Sources */,
 				69883C6E1DC1FBF90092A7BC /* CDGModel.xcdatamodeld in Sources */,
-				6965618F1DC2002900AA7374 /* CDGGeneralDefineConstants.swift in Sources */,
 				69883C721DC1FC2C0092A7BC /* Entity.swift in Sources */,
 				696561881DC1FF2700AA7374 /* CDGCoreDataDataController.swift in Sources */,
 				696561891DC1FF2700AA7374 /* CDGCoreDataEngine.swift in Sources */,
-				696561901DC2002900AA7374 /* CDGGeneralExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +280,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.artcccom.artcc.CoreDataGenericModule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artcc.CoreDataGenericModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -315,7 +299,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.artcccom.artcc.CoreDataGenericModule;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artcc.CoreDataGenericModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
