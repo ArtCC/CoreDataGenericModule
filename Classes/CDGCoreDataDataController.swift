@@ -12,26 +12,27 @@ import CoreData
 /**
  CDGCoreDataDataController class: for create context and data base model
  */
-public class CDGCoreDataDataController: NSObject {
+open class CDGCoreDataDataController: NSObject {
+    private static var __once: () = {
+            Static.instance = CDGCoreDataDataController()
+            initialize()
+        }()
     // MARK: - Public properties
     
     /**
      Manage object context
      */
-    public var managedObjectContext: NSManagedObjectContext
+    open var managedObjectContext: NSManagedObjectContext
     
     /**
      Singleton for Core Data Controller class
      */
-    public class var sharedInstance: CDGCoreDataDataController {
+    open class var sharedInstance: CDGCoreDataDataController {
         struct Static {
             static var instance: CDGCoreDataDataController?
-            static var token: dispatch_once_t = 0
+            static var token: Int = 0
         }
-        dispatch_once(&Static.token) {
-            Static.instance = CDGCoreDataDataController()
-            initialize()
-        }
+        _ = CDGCoreDataDataController.__once
         return Static.instance!
     }
     
@@ -41,26 +42,26 @@ public class CDGCoreDataDataController: NSObject {
      */
     public override init() {
         // This resource is the same name as your xcdatamodeld contained in your project
-        let bundle: NSBundle = NSBundle(forClass: CDGCoreDataDataController.self)
-        guard let modelURL = bundle.URLForResource("CDGModel", withExtension:"momd") else {
+        let bundle: Bundle = Bundle(for: CDGCoreDataDataController.self)
+        guard let modelURL = bundle.url(forResource: "CDGModel", withExtension:"momd") else {
             fatalError("Error loading model from bundle")
         }
         // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model
-        guard let mom = NSManagedObjectModel(contentsOfURL: modelURL) else {
+        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
             fatalError("Error initializing mom from: \(modelURL)")
         }
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        self.managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        self.managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         self.managedObjectContext.persistentStoreCoordinator = psc
         
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docURL = urls[urls.endIndex-1]
         /* The directory the application uses to store the Core Data store file.
          This code uses a file named "CDGModel.sqlite" in the application's documents directory.
          */
-        let storeURL = docURL.URLByAppendingPathComponent("CDGModel.sqlite")
+        let storeURL = docURL.appendingPathComponent("CDGModel.sqlite")
         do {
-            try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
         } catch {
             fatalError("Error migrating store: \(error)")
         }

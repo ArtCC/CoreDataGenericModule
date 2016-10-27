@@ -14,5 +14,5 @@ import CoreData
 
 extension Entity {
     @NSManaged var idEntity: String?
-    @NSManaged var dataEntity: NSData?
+    @NSManaged var dataEntity: Data?
 }
