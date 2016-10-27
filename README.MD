@@ -14,7 +14,7 @@ Install from cocoapods with:
 pod 'CoreDataGenericModule'
 ```
 
-Available from iOS 8++ and Swift 2.3 (Soon in Swift 3)
+Available from iOS 8++ and Swift 3.0 (For Swift 2.3 in other branch with Swift2.3 name)
 
 ## Implementation:
 
