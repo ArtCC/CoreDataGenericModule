@@ -8,6 +8,14 @@ For encryption and decryption use (include in module and install automatically w
 
 `https://github.com/RNCryptor/RNCryptor`
 
+Install from cocoapods with:
+
+```
+pod 'CoreDataGenericModule'
+```
+
+Available from iOS 8++ and Swift 2.3 (Soon in Swift 3)
+
 ## Implementation:
 
 ### Model:
