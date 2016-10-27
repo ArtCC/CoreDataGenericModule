@@ -36,7 +36,7 @@ open class CDGCoreDataEngine: NSObject {
         // Convert dictionary to data
         let data : Data = NSKeyedArchiver.archivedData(withRootObject: dict)
         // Encrypted or not data object
-        var cipherData: Data = RNCryptor.encryptData(data, password: passwordForEncrypted)
+        var cipherData: Data = RNCryptor.encrypt(data: data, withPassword: passwordForEncrypted)
         // Add object in Core Data context
         entity.setValue(cipherData, forKey: "dataEntity")
         // Save in bd
@@ -57,7 +57,7 @@ open class CDGCoreDataEngine: NSObject {
     open class func deleteObjectWithIdentifier(_ identifier: String) -> Bool {
         let managedContext = CDGCoreDataDataController.sharedInstance.managedObjectContext
         let fetchPredicate = NSPredicate(format: "idEntity == %@", identifier)
-        let fetchRequest = NSFetchRequest(entityName: "Entity")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
         fetchRequest.predicate = fetchPredicate
         fetchRequest.returnsObjectsAsFaults = false
         do {
@@ -82,7 +82,7 @@ open class CDGCoreDataEngine: NSObject {
     open class func getObjectWithIdentifier(_ identifier: String, passwordForEncripted: String) -> [String : String]? {
         let managedContext = CDGCoreDataDataController.sharedInstance.managedObjectContext
         let fetchPredicate = NSPredicate(format: "idEntity == %@", identifier)
-        let fetchRequest = NSFetchRequest(entityName: "Entity")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
         fetchRequest.predicate = fetchPredicate
         do {
             let fetchedObject = try managedContext.fetch(fetchRequest)
@@ -92,7 +92,7 @@ open class CDGCoreDataEngine: NSObject {
             if let idEntity = object.value(forKey: "idEntity"), let dataEntity = object.value(forKey: "dataEntity") {
                 // Decryption
                 do {
-                    let originalData: Data = try RNCryptor.decryptData(dataEntity as! NSData, password: passwordForEncripted)
+                    let originalData: Data = try RNCryptor.decrypt(data: (dataEntity as! NSData) as Data, withPassword: passwordForEncripted)
                     // Convert data to dictionary
                     dictionary = (NSKeyedUnarchiver.unarchiveObject(with: originalData)! as? [String : String])!
                     return dictionary
@@ -114,7 +114,7 @@ open class CDGCoreDataEngine: NSObject {
      */
     open class func getObjectsFromCoreData(_ entityName: String, passwordForEncripted: String) -> Array<[String : String]> {
         let managedContext = CDGCoreDataDataController.sharedInstance.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: entityName)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         // Array for return with data or empty
         var array: Array<[String : String]> = []
         do {
@@ -122,10 +122,10 @@ open class CDGCoreDataEngine: NSObject {
             // Decrypted object
             var dictionary: [String : String] = ["" : ""]
             for object in fetchedObject {
-                if let idEntity = object.value(forKey: "idEntity"), let dataEntity = object.value(forKey: "dataEntity") {
+                if let idEntity = (object as AnyObject).value(forKey: "idEntity"), let dataEntity = (object as AnyObject).value(forKey: "dataEntity") {
                     // Decryption
                     do {
-                        let originalData: Data = try RNCryptor.decryptData(dataEntity as! NSData, password: passwordForEncripted)
+                        let originalData: Data = try RNCryptor.decrypt(data: (dataEntity as! NSData) as Data, withPassword: passwordForEncripted)
                         // Convert data to dictionary
                         dictionary = (NSKeyedUnarchiver.unarchiveObject(with: originalData)! as? [String : String])!
                         array.insert(dictionary, at: 0)
@@ -146,7 +146,7 @@ open class CDGCoreDataEngine: NSObject {
      */
     open class func deleteAllInCoreData() -> Bool {
         let managedContext = CDGCoreDataDataController.sharedInstance.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Entity")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Entity")
         fetchRequest.returnsObjectsAsFaults = false
         do {
             let results = try managedContext.fetch(fetchRequest)

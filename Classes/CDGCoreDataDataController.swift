@@ -13,28 +13,17 @@ import CoreData
  CDGCoreDataDataController class: for create context and data base model
  */
 open class CDGCoreDataDataController: NSObject {
-    private static var __once: () = {
-            Static.instance = CDGCoreDataDataController()
-            initialize()
-        }()
     // MARK: - Public properties
     
+    public static let sharedInstance: CDGCoreDataDataController = {
+        let instance = CDGCoreDataDataController()
+        return instance
+    }()
+
     /**
      Manage object context
      */
     open var managedObjectContext: NSManagedObjectContext
-    
-    /**
-     Singleton for Core Data Controller class
-     */
-    open class var sharedInstance: CDGCoreDataDataController {
-        struct Static {
-            static var instance: CDGCoreDataDataController?
-            static var token: Int = 0
-        }
-        _ = CDGCoreDataDataController.__once
-        return Static.instance!
-    }
     
     /**
      Init
