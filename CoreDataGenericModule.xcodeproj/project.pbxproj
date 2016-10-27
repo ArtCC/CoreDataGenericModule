@@ -49,7 +49,7 @@
 				6965618C1DC2002900AA7374 /* CDGGeneralDefineConstants.swift */,
 				6965618D1DC2002900AA7374 /* CDGGeneralExtensions.swift */,
 			);
-			name = Commons;
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		69883C551DC1FBD40092A7BC = {
@@ -82,22 +82,22 @@
 			isa = PBXGroup;
 			children = (
 				6965618B1DC2001D00AA7374 /* Commons */,
+				69883C6B1DC1FBEB0092A7BC /* Model */,
 				696561851DC1FF2700AA7374 /* CDGCoreDataDataController.swift */,
 				696561861DC1FF2700AA7374 /* CDGCoreDataEngine.swift */,
 				696561871DC1FF2700AA7374 /* CDGCoreDataProtocol.swift */,
-				69883C6B1DC1FBEB0092A7BC /* Model */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		69883C6B1DC1FBEB0092A7BC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				69883C6C1DC1FBF90092A7BC /* CDGModel.xcdatamodeld */,
 				69883C6F1DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift */,
 				69883C701DC1FC2C0092A7BC /* Entity.swift */,
-				69883C6C1DC1FBF90092A7BC /* CDGModel.xcdatamodeld */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
