@@ -11,7 +11,7 @@ For encryption and decryption use (include in module and install automatically w
 Install from cocoapods with:
 
 ```
-pod 'CoreDataGenericModule'
+pod 'CoreDataGenericModule', :git => "https://github.com/ArtCC/CoreDataGenericModule.git"
 ```
 
 Available from iOS 8++ and Swift 3.0 (For Swift 2.3 in other branch with Swift2.3 name)
