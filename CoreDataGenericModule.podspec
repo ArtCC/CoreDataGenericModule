@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/ArtCC/CoreDataGenericModule.git", :branch => "master", :tag => s.version.to_s }
   s.source_files     = "Classes/**/*.{swift}"
   s.resources        = "Classes/Model/*.xcdatamodeld"
-  s.dependency 'RNCryptor', '~> 5.0.0'
+  s.dependency 'RNCryptor'
 end
