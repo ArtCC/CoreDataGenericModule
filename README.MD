@@ -14,7 +14,7 @@ Install from cocoapods with:
 pod 'CoreDataGenericModule', :git => "https://github.com/ArtCC/CoreDataGenericModule.git"
 ```
 
-Available from iOS 8++ and Swift 3.0
+Available from iOS 10++ and Swift 4.0
 
 ## Implementation:
 
