@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CoreDataGenericModule"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "Core Data generic module for persist encrypted object"
   s.description      = <<-DESC
                           Core Data generic module for persist encrypted object

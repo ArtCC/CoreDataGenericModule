@@ -56,6 +56,7 @@ open class CDGCoreDataDataController: NSObject {
          This code uses a file named "CDGModel.sqlite" in the application's documents directory.
          */
         let storeURL = docURL.appendingPathComponent("CDGModel.sqlite")
+        
         do {
             
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)

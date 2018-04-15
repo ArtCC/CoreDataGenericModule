@@ -77,11 +77,19 @@ open class CDGCoreDataEngine: NSObject {
             
             let fetchedEntities = try managedContext.fetch(fetchRequest)
             
-            for entity in fetchedEntities {
-                
-                managedContext.delete(entity as! NSManagedObject)
-                
-                try! managedContext.save()
+            if !fetchedEntities.isEmpty {
+             
+                for entity in fetchedEntities {
+                    
+                    guard let entDelete = entity as? NSManagedObject else {
+                        
+                        return false
+                    }
+                    
+                    managedContext.delete(entDelete)
+                    
+                    try! managedContext.save()
+                }
             }
         } catch let error as NSError {
             
@@ -89,6 +97,7 @@ open class CDGCoreDataEngine: NSObject {
             
             return false
         }
+        
         return true
     }
     
@@ -108,36 +117,60 @@ open class CDGCoreDataEngine: NSObject {
             
             let fetchedObject = try managedContext.fetch(fetchRequest)
             
-            // Decrypted object
-            var dictionary: [String : String] = ["" : ""]
-            
-            guard let object = fetchedObject[0] as? NSManagedObject else {
+            if !fetchedObject.isEmpty {
                 
-                return nil
-            }
-            
-            if let idEntity = object.value(forKey: "idEntity"), let dataEntity = object.value(forKey: "dataEntity") {
+                // Decrypted object
+                var dictionary: [String : String] = ["" : ""]
                 
-                // Decryption
-                do {
+                guard let object = fetchedObject[0] as? NSManagedObject else {
                     
-                    let originalData: Data = try RNCryptor.decrypt(data: (dataEntity as! NSData) as Data, withPassword: passwordForEncripted)
+                    return nil
+                }
+                
+                if let idEntity = object.value(forKey: "idEntity"),
+                    let dataEntity = object.value(forKey: "dataEntity") {
                     
-                    // Convert data to dictionary
-                    dictionary = (NSKeyedUnarchiver.unarchiveObject(with: originalData)! as? [String : String])!
-                    
-                    return dictionary
-                } catch {
-                    
-                    print(error)
+                    // Decryption
+                    do {
+                        
+                        guard let dEntity = dataEntity as? NSData else {
+                            
+                            return nil
+                        }
+                        
+                        let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
+                                                                       withPassword: passwordForEncripted)
+                        
+                        // Convert data to dictionary
+                        
+                        if let d = NSKeyedUnarchiver.unarchiveObject(with: originalData) {
+                            
+                            guard let dict = d as? [String : String] else {
+                                
+                                return nil
+                            }
+                            
+                            dictionary = dict
+                        }
+                        
+                        if !dictionary.isEmpty {
+                            
+                            return dictionary
+                        }
+                        
+                        return nil
+                    } catch {
+                        
+                        print(error)
+                    }
                 }
             }
-            
-            return nil
         } catch let error as NSError {
             
             fatalError("Failed to fetch entity: \(error)")
         }
+        
+        return nil
     }
     
     /**
@@ -157,34 +190,57 @@ open class CDGCoreDataEngine: NSObject {
             
             let fetchedObject = try managedContext.fetch(fetchRequest)
             
-            // Decrypted object
-            var dictionary: [String : String] = ["" : ""]
-            
-            for object in fetchedObject {
+            if !fetchedObject.isEmpty {
+             
+                // Decrypted object
+                var dictionary: [String : String] = ["" : ""]
                 
-                if let idEntity = (object as AnyObject).value(forKey: "idEntity"),
-                    let dataEntity = (object as AnyObject).value(forKey: "dataEntity") {
+                for object in fetchedObject {
                     
-                    // Decryption
-                    do {
+                    if let idEntity = (object as AnyObject).value(forKey: "idEntity"),
+                        let dataEntity = (object as AnyObject).value(forKey: "dataEntity") {
                         
-                        let originalData: Data = try RNCryptor.decrypt(data: (dataEntity as! NSData) as Data, withPassword: passwordForEncripted)
-                        
-                        // Convert data to dictionary
-                        dictionary = (NSKeyedUnarchiver.unarchiveObject(with: originalData)! as? [String : String])!
-                        array.insert(dictionary, at: 0)
-                    } catch {
-                        
-                        print(error)
+                        // Decryption
+                        do {
+                            
+                            guard let dEntity = dataEntity as? NSData else {
+                                
+                                return nil
+                            }
+                            
+                            let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
+                                                                           withPassword: passwordForEncripted)
+                            
+                            if let d = NSKeyedUnarchiver.unarchiveObject(with: originalData) {
+                                
+                                // Convert data to dictionary
+                                guard let dict = d as? [String : String] else {
+                                    
+                                    return nil
+                                }
+                                
+                                dictionary = dict
+                            }
+                            
+                            if !dictionary.isEmpty {
+                                
+                                array.insert(dictionary, at: 0)
+                            }
+                        } catch {
+                            
+                            print(error)
+                        }
                     }
                 }
+                
+                return array
             }
-            
-            return array
         } catch {
             
             fatalError("Failed to fetch entity: \(error)")
         }
+        
+        return []
     }
     
     /**
