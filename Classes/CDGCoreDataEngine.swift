@@ -110,7 +110,11 @@ open class CDGCoreDataEngine: NSObject {
             
             // Decrypted object
             var dictionary: [String : String] = ["" : ""]
-            let object = fetchedObject[0] as! NSManagedObject
+            
+            guard let object = fetchedObject[0] as? NSManagedObject else {
+                
+                return nil
+            }
             
             if let idEntity = object.value(forKey: "idEntity"), let dataEntity = object.value(forKey: "dataEntity") {
                 
@@ -198,7 +202,11 @@ open class CDGCoreDataEngine: NSObject {
             
             for managedObject in results {
                 
-                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                guard let managedObjectData:NSManagedObject = managedObject as? NSManagedObject else {
+                    
+                    return false
+                }
+                
                 managedContext.delete(managedObjectData)
             }
             
