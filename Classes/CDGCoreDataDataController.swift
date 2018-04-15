@@ -20,7 +20,7 @@ open class CDGCoreDataDataController: NSObject {
         
         return instance
     }()
-
+    
     /**
      Manage object context
      */

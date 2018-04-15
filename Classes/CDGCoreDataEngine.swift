@@ -205,7 +205,7 @@ open class CDGCoreDataEngine: NSObject {
                             
                             guard let dEntity = dataEntity as? NSData else {
                                 
-                                return nil
+                                return []
                             }
                             
                             let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
@@ -216,7 +216,7 @@ open class CDGCoreDataEngine: NSObject {
                                 // Convert data to dictionary
                                 guard let dict = d as? [String : String] else {
                                     
-                                    return nil
+                                    return []
                                 }
                                 
                                 dictionary = dict
