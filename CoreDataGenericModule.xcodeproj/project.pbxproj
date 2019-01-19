@@ -130,7 +130,7 @@
 				TargetAttributes = {
 					69883C5E1DC1FBD40092A7BC = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -291,8 +291,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -312,8 +311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.artcc.CoreDataGenericModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
