@@ -139,6 +139,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 69883C551DC1FBD40092A7BC;
@@ -218,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -263,7 +264,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -287,6 +288,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.artcc.CoreDataGenericModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -308,6 +310,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.artcc.CoreDataGenericModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

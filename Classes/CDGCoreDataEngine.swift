@@ -78,7 +78,7 @@ open class CDGCoreDataEngine: NSObject {
             let fetchedEntities = try managedContext.fetch(fetchRequest)
             
             if !fetchedEntities.isEmpty {
-             
+                
                 for entity in fetchedEntities {
                     
                     guard let entDelete = entity as? NSManagedObject else {
@@ -191,7 +191,7 @@ open class CDGCoreDataEngine: NSObject {
             let fetchedObject = try managedContext.fetch(fetchRequest)
             
             if !fetchedObject.isEmpty {
-             
+                
                 // Decrypted object
                 var dictionary: [String : String] = ["" : ""]
                 
