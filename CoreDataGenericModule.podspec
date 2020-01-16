@@ -10,6 +10,7 @@ s.description = 'Core Data generic module for persist encrypted object with id a
 s.homepage = 'https://github.com/ArtCC/CoreDataGenericModule'
 s.source_files = 'Classes/**/*.{swift}'
 s.resources = 'Classes/Model/*.xcdatamodeld'
-s.platform = :ios
+s.swift_versions = ['5.0', '5.1']
+s.ios.deployment_target = '10.0'
 s.dependency 'RNCryptor', '~> 5.0'
 end
