@@ -11,5 +11,5 @@ s.homepage = 'https://github.com/ArtCC/CoreDataGenericModule'
 s.source_files = 'Classes/**/*.{swift}'
 s.resources = 'Classes/Model/*.xcdatamodeld'
 s.platform = :ios
-s.dependency 'RNCryptor', '5.0'
+s.dependency 'RNCryptor', '~> 5.0'
 end
