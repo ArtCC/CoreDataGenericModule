@@ -13,6 +13,7 @@ import Foundation
 import CoreData
 
 extension Entity {
+    
     @NSManaged var idEntity: String?
     @NSManaged var dataEntity: Data?
 }

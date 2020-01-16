@@ -12,6 +12,7 @@ import Foundation
  Core Data protocol for implement in model class of app from Core Data module
  */
 public protocol CDGCoreDataProtocol {
+    
     /**
      *  Implement in model class. Return the object given a dictionary
      */
