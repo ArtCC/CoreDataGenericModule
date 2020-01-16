@@ -42,7 +42,7 @@ open class CDGCoreDataEngine: NSObject {
         let data : Data = NSKeyedArchiver.archivedData(withRootObject: dict)
         
         // Encrypted or not data object
-        var cipherData: Data = RNCryptor.encrypt(data: data, withPassword: passwordForEncrypted)
+        let cipherData: Data = RNCryptor.encrypt(data: data, withPassword: passwordForEncrypted)
         
         // Add object in Core Data context
         entity.setValue(cipherData, forKey: "dataEntity")
@@ -106,7 +106,7 @@ open class CDGCoreDataEngine: NSObject {
                 guard let object = fetchedObject[0] as? NSManagedObject else {
                     return nil
                 }
-                if let idEntity = object.value(forKey: "idEntity"),
+                if let _ = object.value(forKey: "idEntity"),
                     let dataEntity = object.value(forKey: "dataEntity") {
                     
                     // Decryption
@@ -154,7 +154,7 @@ open class CDGCoreDataEngine: NSObject {
                 // Decrypted object
                 var dictionary: [String : String] = ["" : ""]
                 for object in fetchedObject {
-                    if let idEntity = (object as AnyObject).value(forKey: "idEntity"),
+                    if let _ = (object as AnyObject).value(forKey: "idEntity"),
                         let dataEntity = (object as AnyObject).value(forKey: "dataEntity") {
                         
                         // Decryption

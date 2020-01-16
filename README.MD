@@ -11,10 +11,10 @@ For encryption and decryption use (include in module and install automatically w
 Install from cocoapods with:
 
 ```
-pod 'CoreDataGenericModule', :git => "https://github.com/ArtCC/CoreDataGenericModule.git"
+pod 'CoreDataGenericModule'
 ```
 
-Available from iOS 12++ and Swift 5.1
+Available from iOS 12++ and Swift 5
 
 ## Implementation:
 
