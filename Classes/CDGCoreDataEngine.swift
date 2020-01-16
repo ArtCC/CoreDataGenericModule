@@ -110,28 +110,23 @@ open class CDGCoreDataEngine: NSObject {
                     let dataEntity = object.value(forKey: "dataEntity") {
                     
                     // Decryption
-                    do {
-                        guard let dEntity = dataEntity as? NSData else {
+                    guard let dEntity = dataEntity as? NSData else {
+                        return nil
+                    }
+                    let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
+                                                                   withPassword: passwordForEncripted)
+                    
+                    // Convert data to dictionary
+                    if let d = NSKeyedUnarchiver.unarchiveObject(with: originalData) {
+                        guard let dict = d as? [String : String] else {
                             return nil
                         }
-                        
-                        let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
-                                                                       withPassword: passwordForEncripted)
-                        
-                        // Convert data to dictionary
-                        if let d = NSKeyedUnarchiver.unarchiveObject(with: originalData) {
-                            guard let dict = d as? [String : String] else {
-                                return nil
-                            }
-                            dictionary = dict
-                        }
-                        if !dictionary.isEmpty {
-                            return dictionary
-                        }
-                        return nil
-                    } catch {
-                        printDebug(error.localizedDescription)
+                        dictionary = dict
                     }
+                    if !dictionary.isEmpty {
+                        return dictionary
+                    }
+                    return nil
                 }
             }
         } catch let error as NSError {
@@ -163,26 +158,22 @@ open class CDGCoreDataEngine: NSObject {
                         let dataEntity = (object as AnyObject).value(forKey: "dataEntity") {
                         
                         // Decryption
-                        do {
-                            guard let dEntity = dataEntity as? NSData else {
+                        guard let dEntity = dataEntity as? NSData else {
+                            return []
+                        }
+                        let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
+                                                                       withPassword: passwordForEncripted)
+                        
+                        if let d = NSKeyedUnarchiver.unarchiveObject(with: originalData) {
+                            
+                            // Convert data to dictionary
+                            guard let dict = d as? [String : String] else {
                                 return []
                             }
-                            let originalData: Data = try RNCryptor.decrypt(data: dEntity as Data,
-                                                                           withPassword: passwordForEncripted)
-                            
-                            if let d = NSKeyedUnarchiver.unarchiveObject(with: originalData) {
-                                
-                                // Convert data to dictionary
-                                guard let dict = d as? [String : String] else {
-                                    return []
-                                }
-                                dictionary = dict
-                            }
-                            if !dictionary.isEmpty {
-                                array.insert(dictionary, at: 0)
-                            }
-                        } catch {
-                            printDebug(error.localizedDescription)
+                            dictionary = dict
+                        }
+                        if !dictionary.isEmpty {
+                            array.insert(dictionary, at: 0)
                         }
                     }
                 }
