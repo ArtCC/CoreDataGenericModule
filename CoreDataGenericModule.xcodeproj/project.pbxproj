@@ -14,6 +14,7 @@
 		69883C6E1DC1FBF90092A7BC /* CDGModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69883C6C1DC1FBF90092A7BC /* CDGModel.xcdatamodeld */; };
 		69883C711DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69883C6F1DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift */; };
 		69883C721DC1FC2C0092A7BC /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69883C701DC1FC2C0092A7BC /* Entity.swift */; };
+		94384B9F23D049E300700D5D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94384B9E23D049E300700D5D /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		69883C6D1DC1FBF90092A7BC /* CDGModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDGModel.xcdatamodel; sourceTree = "<group>"; };
 		69883C6F1DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		69883C701DC1FC2C0092A7BC /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		94384B9E23D049E300700D5D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				696561851DC1FF2700AA7374 /* CDGCoreDataDataController.swift */,
 				696561861DC1FF2700AA7374 /* CDGCoreDataEngine.swift */,
 				696561871DC1FF2700AA7374 /* CDGCoreDataProtocol.swift */,
+				94384B9E23D049E300700D5D /* Utils.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -124,7 +127,7 @@
 		69883C561DC1FBD40092A7BC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = CDG;
+				CLASSPREFIX = "";
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Arturo Carretero Calvo";
 				TargetAttributes = {
@@ -136,11 +139,11 @@
 			};
 			buildConfigurationList = 69883C591DC1FBD40092A7BC /* Build configuration list for PBXProject "CoreDataGenericModule" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 69883C551DC1FBD40092A7BC;
 			productRefGroup = 69883C601DC1FBD40092A7BC /* Products */;
@@ -170,6 +173,7 @@
 				69883C711DC1FC2C0092A7BC /* Entity+CoreDataProperties.swift in Sources */,
 				6965618A1DC1FF2700AA7374 /* CDGCoreDataProtocol.swift in Sources */,
 				69883C6E1DC1FBF90092A7BC /* CDGModel.xcdatamodeld in Sources */,
+				94384B9F23D049E300700D5D /* Utils.swift in Sources */,
 				69883C721DC1FC2C0092A7BC /* Entity.swift in Sources */,
 				696561881DC1FF2700AA7374 /* CDGCoreDataDataController.swift in Sources */,
 				696561891DC1FF2700AA7374 /* CDGCoreDataEngine.swift in Sources */,
